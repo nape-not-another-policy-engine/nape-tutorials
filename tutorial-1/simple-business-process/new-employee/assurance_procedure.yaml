@@ -23,5 +23,5 @@ activity:
       - name: signed-compensation-agreement
         short: "Signed Compensation Agreement"
         description: "The new employee has signed their compensation agreement."
-        test: "activity/document-signatures/verify-signed-documents.py"
+        test: "activity/document-signatures/signed-compensation-agreement.py"
         evidence: "evidence/document_signatures/hrms-employee-onboarding.json"
