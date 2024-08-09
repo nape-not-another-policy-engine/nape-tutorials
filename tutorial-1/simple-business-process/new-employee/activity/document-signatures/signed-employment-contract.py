@@ -16,7 +16,7 @@ def evaluate(evidence):
         data = json.loads(json_data)
 
         # Navigate to the documents_signed section
-        documents = data.get("document-signatures", {}).get("documents_signed", [])
+        documents = data.get("onboarding", {}).get("documents_signed", [])
 
         # Search for the Employment Contract
         for document in documents:

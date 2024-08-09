@@ -20,6 +20,10 @@ nape collect evidence \
     --control-activity "criminal-history" \
     --file-path "raw-evidence/background-check.txt"
 
+nape collect evidence \
+    --control-activity "document-signatures" \
+    --file-path "raw-evidence/hrms-employee-onboarding.json"
+
 echo "--- Execute the Assurance Reporting process based upon evidence collected --- "
 
 nape collect report
