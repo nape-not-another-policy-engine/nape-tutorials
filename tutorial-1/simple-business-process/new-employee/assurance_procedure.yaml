@@ -14,5 +14,5 @@ activity:
       - name: verify-no-criminal-history
         short: "Verify No Criminal History"
         description: "The background check, as evidence, demonstrates the new employee does not have a criminal history."
-        test: "activity/peer-review/verify-no-criminal-history.py"
+        test: "activity/criminal_history/verify-no-criminal-history.py"
         evidence: "evidence/criminal_history/background-check.txt"
