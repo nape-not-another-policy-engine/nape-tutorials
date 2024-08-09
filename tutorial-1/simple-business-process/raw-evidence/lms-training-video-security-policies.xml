@@ -1,0 +1,18 @@
+<OnlineTraining>
+    <Employee>
+        <EmployeeID>EMP-999</EmployeeID>
+        <Name>Bill Bensing</Name>
+        <Position>Software Developer</Position>
+        <Department>IT</Department>
+    </Employee>
+    <TrainingSession>
+        <TrainingVideo>
+            <Title>Introduction to Security Policies</Title>
+            <StartTime>2024-07-15T09:00:00Z</StartTime>
+            <EndTime>2024-07-15T09:30:00Z</EndTime>
+            <Duration>30 minutes</Duration>
+            <Status>Completed</Status>
+            <Score>95%</Score>
+        </TrainingVideo>
+    </TrainingSession>
+</OnlineTraining>

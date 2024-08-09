@@ -1,0 +1,25 @@
+{
+    "onboarding": {
+      "employee_id": "EMP-999",
+      "name": "Bill Bensing",
+      "position": "Software Engineer",
+      "start_date": "2024-08-01",
+      "documents_signed": [
+        {
+          "name": "Employment Contract",
+          "signed": false,
+          "signed_date": "2024-07-28"
+        },
+        {
+          "name": "Confidentiality Agreement",
+          "signed": true,
+          "signed_date": "2024-07-29"
+        },
+        {
+            "name": "Compensation Agreement",
+            "signed": true,
+            "signed_date": "2024-07-29"
+          }
+      ]
+    }
+  }

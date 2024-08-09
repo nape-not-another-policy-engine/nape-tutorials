@@ -1,0 +1,18 @@
+<OnlineTraining>
+    <Employee>
+        <EmployeeID>EMP-999</EmployeeID>
+        <Name>Bill Bensing</Name>
+        <Position>Software Developer</Position>
+        <Department>IT</Department>
+    </Employee>
+    <TrainingSession>
+        <TrainingVideo>
+            <Title>Data Protection and Privacy</Title>
+            <StartTime>2024-07-17T11:00:00Z</StartTime>
+            <EndTime>2024-07-17T11:40:00Z</EndTime>
+            <Duration>40 minutes</Duration>
+            <Status>Completed</Status>
+            <Score>92%</Score>
+        </TrainingVideo>
+    </TrainingSession>
+</OnlineTraining>

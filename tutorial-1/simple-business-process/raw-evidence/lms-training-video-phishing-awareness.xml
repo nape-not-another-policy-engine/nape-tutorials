@@ -1,0 +1,18 @@
+<OnlineTraining>
+    <Employee>
+        <EmployeeID>EMP-999</EmployeeID>
+        <Name>Bill Bensing</Name>
+        <Position>Software Developer</Position>
+        <Department>IT</Department>
+    </Employee>
+    <TrainingSession>
+        <TrainingVideo>
+            <Title>Phishing Awareness</Title>
+            <StartTime>2024-07-16T10:00:00Z</StartTime>
+            <EndTime>2024-07-16T10:25:00Z</EndTime>
+            <Duration>25 minutes</Duration>
+            <Status>Completed</Status>
+            <Score>90%</Score>
+        </TrainingVideo>
+    </TrainingSession>
+</OnlineTraining>
