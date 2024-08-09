@@ -15,7 +15,7 @@ activity:
         short: "Verify No Criminal History"
         description: "The background check, as evidence, demonstrates the new employee does not have a criminal history."
         test: "activity/criminal-history/verify-no-criminal-history.py"
-        evidence: "evidence/criminal_history/background-check.txt"
+        evidence: "evidence/criminal-history/background-check.txt"
   - name: document-signatures
     short: "Signed Documents"
     description: "This activity verifies that the new employee has signed all required documents."
@@ -24,4 +24,4 @@ activity:
         short: "Signed Compensation Agreement"
         description: "The new employee has signed their compensation agreement."
         test: "activity/document-signatures/signed-compensation-agreement.py"
-        evidence: "evidence/document_signatures/hrms-employee-onboarding.json"
+        evidence: "evidence/document-signatures/hrms-employee-onboarding.json"
