@@ -7,10 +7,10 @@ rm -rf nrn*
 echo "--- NAPE Collection Test 1 --- "
 
 nape collect start \
-    --subject "nrn:procedure:nape-tutorials/tutorial-1:new-employee" \
+    --subject "nrn:procedure:nape-tutorials/tutorial-1:new-employee/empid-10387493" \
     --subject-id 10387493 \
-    --procedure-link https://github.com/nape-not-another-policy-engine/nape-tutorials.git \
-    --procedure-directory tutorial-1/simple-business-process/new-employee \
+    --procedure-link https://github.com/nape-not-another-policy-engine/nape-catalog.git \
+    --procedure-directory nape-tutorials/tutorial-1/simple-business-process/new-employee \
     --meta employee-name "Bill Bensing" \
     --meta job-role "Software Engineer"
 
