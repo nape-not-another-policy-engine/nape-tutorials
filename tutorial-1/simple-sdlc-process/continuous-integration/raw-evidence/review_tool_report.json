@@ -1,0 +1,21 @@
+{
+    "reviewRequest": {
+        "requestor": "jane.doe@example.com",
+        "date": "2024-10-01",
+        "description": "Code review for new feature implementation in Module XYZ."
+    },
+    "reviewers": [
+        {
+            "name": "John Smith",
+            "email": "john.smith@example.com",
+            "reviewDate": "2024-10-02",
+            "status": "approved"
+        },
+        {
+            "name": "Alice Johnson",
+            "email": "alice.johnson@example.com",
+            "reviewDate": "2024-10-02",
+            "status": "approved"
+        }
+    ]
+}

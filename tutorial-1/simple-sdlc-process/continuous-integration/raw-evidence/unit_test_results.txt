@@ -1,0 +1,22 @@
+Unit Test Report
+================
+
+Project: Sample Project
+Date: 2024-10-02
+
+Test Summary:
+-------------
+Total Tests Run: 50
+Passed: 48
+Failed: 2
+Skipped: 0
+
+Detailed Results:
+-----------------
+Test 1: PASSED
+Test 2: PASSED
+...
+Test 49: FAILED - NullPointerException in Module XYZ
+Test 50: FAILED - ArrayIndexOutOfBounds in Module ABC
+
+Conclusion: 96% of the unit tests passed. Further investigation required for the 2 failed tests.

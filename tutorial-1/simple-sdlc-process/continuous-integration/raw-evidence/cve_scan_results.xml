@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CVECheckReport>
+    <ProjectName>Sample Project</ProjectName>
+    <Date>2024-10-02</Date>
+    <TotalPackages>45</TotalPackages>
+    <VulnerablePackages>2</VulnerablePackages>
+    <Details>
+        <Package>
+            <Name>LibraryXYZ</Name>
+            <Version>1.2.3</Version>
+            <CVE>ID-2024-1234</CVE>
+            <Severity>High</Severity>
+        </Package>
+        <Package>
+            <Name>LibraryABC</Name>
+            <Version>4.5.6</Version>
+            <CVE>ID-2024-5678</CVE>
+            <Severity>Medium</Severity>
+        </Package>
+    </Details>
+</CVECheckReport>
