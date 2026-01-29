@@ -1,0 +1,91 @@
+[app]
+name = "orders-api"
+environment = "prod"
+
+# Application TLS identity (used for inbound HTTPS or mTLS)
+[app.tls]
+enabled = true
+mode = "mutual"                     # server | mutual
+cert_ref = "secrets://vault/prod/orders-api_tls_cert_pem"
+key_ref = "secrets://vault/prod/orders-api_tls_key_pem"
+ca_bundle_ref = "secrets://vault/prod/trusted_client_ca_bundle_pem"
+min_tls_version = "TLS1.2"
+require_client_cert = true
+
+
+[database]
+host = "db.prod.internal"
+port = 3306
+name = "orders"
+username = "orders_app"
+password_ref = "secrets://vault/prod/orders_app_mysql_password"
+
+
+# 1) Require TLS to Database
+[database.tls]
+enabled = true
+mode = "verify_identity"            # verify server cert + hostname (preferred)
+ca_cert_ref = "secrets://vault/prod/mysql_ca_bundle_pem"
+server_name = "db.prod.internal"
+
+
+# 2) Connection pool limits (prevents DB overload)
+[database.pool]
+max_connections = 40
+min_idle = 5
+connection_timeout_ms = 2000
+idle_timeout_ms = 300000
+max_lifetime_ms = 1800000
+
+
+# 3) Transaction settings (OLTP correctness)
+[database.transactions]
+default_isolation = "read_committed"
+autocommit = false
+
+
+# 4) Query safety and timeouts (prevents runaway queries)
+[database.timeouts]
+statement_timeout_ms = 5000
+socket_timeout_ms = 5000
+
+
+# 5) Identity and authorization behavior for DB actions
+[database.access]
+role = "app_rw"                     # conceptual role, maps to least-privileged grants
+allow_ddl = false                   # prevent schema changes from the app path
+
+
+# 6) DB visibility without leaking secrets
+[observability]
+log_sql = false                     # do not log full SQL with parameters in prod
+log_connection_errors = true
+
+[observability.metrics]
+enabled = true
+emit_pool_stats = true
+
+
+# 7) Secret handling
+[security.secrets]
+rotation_required = true
+max_secret_age_days = 90
+
+
+# 8) Egress control (only DB endpoint allowed)
+[security.network_policy]
+allowlist = ["db.prod.internal:3306"]
+
+
+# 9) Retry policy (bounded, avoids thundering herds)
+[reliability.retries]
+enabled = true
+max_attempts = 3
+backoff_ms = 200
+jitter = true
+
+
+# 10) Fail closed if security expectations are not met
+[reliability.policy]
+refuse_connection_if_tls_invalid = true
+refuse_connection_if_hostname_mismatch = true

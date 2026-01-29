@@ -4,12 +4,14 @@ echo "Cleaning up testing space"
 
 rm -rf nrn*
 
+PROCEDURE_LINK="file://$HOME/Documents/source_code/nape-not-another-policy-engine/nape-catalog"
+
 echo "--- NAPE Collection Test 1 --- "
 
 nape collect start \
     --subject "nrn:procedure:nape-tutorials/tutorial-1:new-employee/empid-10387493" \
     --subject-id 10387493 \
-    --procedure-link https://github.com/nape-not-another-policy-engine/nape-catalog.git \
+    --procedure-link "$PROCEDURE_LINK" \
     --procedure-directory nape-tutorials/tutorial-1/simple-business-process/new-employee \
     --meta employee-name "Bill Bensing" \
     --meta job-role "Software Engineer"

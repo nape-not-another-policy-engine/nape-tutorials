@@ -1,0 +1,140 @@
+rover_cloud:
+  name: rover-prod
+  region: us-east-1
+  environment: production
+
+  network:
+    vpc:
+      cidr: 10.20.0.0/16
+      dns_resolution: enabled
+      dns_hostnames: enabled
+
+    subnets:
+      # Public-facing DMZ
+      dmz:
+        cidr: 10.20.1.0/24
+        zone: zone-a
+        purpose: ingress
+        public_ip_assignment: disabled
+
+      # Application tier
+      app:
+        cidr: 10.20.10.0/24
+        zone: zone-a
+        purpose: application
+        public_ip_assignment: disabled
+
+      # Database tier (most restricted)
+      data:
+        cidr: 10.20.20.0/24
+        zone: zone-a
+        purpose: database
+        public_ip_assignment: disabled
+
+  routing:
+    internet_gateway:
+      enabled: true
+      attached_to_vpc: true
+
+    route_tables:
+      dmz:
+        routes:
+          - destination: 0.0.0.0/0
+            target: internet_gateway
+
+      app:
+        routes:
+          - destination: 0.0.0.0/0
+            target: nat_gateway
+
+      data:
+        routes:
+          - destination: 10.20.0.0/16
+            target: local
+        deny_internet_egress: true
+
+  security_groups:
+    dmz_sg:
+      description: inbound internet only to reverse proxy
+      ingress:
+        - protocol: tcp
+          port: 443
+          source: 0.0.0.0/0
+      egress:
+        - protocol: tcp
+          port: 8443
+          destination: 10.20.10.0/24
+
+    app_sg:
+      description: app tier access from DMZ only
+      ingress:
+        - protocol: tcp
+          port: 8443
+          source: 10.20.1.0/24
+      egress:
+        - protocol: tcp
+          port: 3306
+          destination: 10.20.20.0/24
+
+    data_sg:
+      description: database tier access from app only
+      ingress:
+        - protocol: tcp
+          port: 3306
+          source: 10.20.10.0/24
+      egress: []
+
+  network_controls:
+    nacls:
+      dmz:
+        allow:
+          - tcp:443
+        deny_all_other: true
+
+      app:
+        allow:
+          - tcp:8443
+          - tcp:3306
+        deny_all_other: true
+
+      data:
+        allow:
+          - tcp:3306
+        deny_all_other: true
+
+  access:
+    bastion:
+      enabled: true
+      subnet: dmz
+      ssh_allowed_from:
+        - 192.0.2.0/24   # corporate admin range only
+      mfa_required: true
+      session_recording: enabled
+
+  logging:
+    flow_logs:
+      enabled: true
+      retention_days: 90
+      capture:
+        - accepted
+        - rejected
+
+    firewall_logs:
+      enabled: true
+      retention_days: 180
+
+  monitoring:
+    intrusion_detection:
+      enabled: true
+      alert_on:
+        - port_scan
+        - lateral_movement
+        - unauthorized_egress
+
+  policy:
+    default_deny: true
+    segmentation_enforced: true
+    internet_access:
+      dmz: allowed
+      app: outbound_only_via_nat
+      data: denied
