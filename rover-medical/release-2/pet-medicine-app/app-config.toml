@@ -1,32 +1,32 @@
 [app]
-name = "orders-api"
+name = "pet-med-app"
 environment = "prod"
 
 # Application TLS identity (used for inbound HTTPS or mTLS)
 [app.tls]
 enabled = true
 mode = "mutual"                     # server | mutual
-cert_ref = "secrets://vault/prod/orders-api_tls_cert_pem"
-key_ref = "secrets://vault/prod/orders-api_tls_key_pem"
+cert_ref = "secrets://vault/prod/pet-med-app_tls_cert_pem"
+key_ref = "secrets://vault/prod/pet-med-app_tls_key_pem"
 ca_bundle_ref = "secrets://vault/prod/trusted_client_ca_bundle_pem"
 min_tls_version = "TLS1.2"
 require_client_cert = true
 
 
 [database]
-host = "db.prod.internal"
+host = "db://pet-medicine-db/prescriptions"
 port = 3306
-name = "orders"
-username = "orders_app"
-password_ref = "secrets://vault/prod/orders_app_mysql_password"
+name = "pet-medicine"
+username = "pet-med-app"
+password_ref = "secrets://vault/prod/orders_app_my-database_password"
 
 
 # 1) Require TLS to Database
 [database.tls]
 enabled = true
 mode = "verify_identity"            # verify server cert + hostname (preferred)
-ca_cert_ref = "secrets://vault/prod/mysql_ca_bundle_pem"
-server_name = "db.prod.internal"
+ca_cert_ref = "secrets://vault/prod/my-datbase_ca_bundle_pem"
+server_name = "db://pet-medicine-db/prescriptions"
 
 
 # 2) Connection pool limits (prevents DB overload)

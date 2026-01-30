@@ -1,4 +1,0 @@
-This must be here because, as of right now, if the evidence is not found by NAPE, then it errors out.
-NOTE - Since NAPE does not collect the evidence (go to it's origin and bring it back), we either need to u
-return either inconclusive when evidence is not found, or make sure to state that the evidence aggregator must
-create a blank document in place of the evidence, and possibly with a note that says what the collection/aggregation issue was
