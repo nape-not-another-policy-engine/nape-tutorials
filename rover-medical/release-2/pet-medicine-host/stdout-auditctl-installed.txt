@@ -1,3 +1,0 @@
-auditd.service - Security Auditing Service
-   Loaded: loaded (/usr/lib/systemd/system/auditd.service; enabled)
-   Active: active (running)
