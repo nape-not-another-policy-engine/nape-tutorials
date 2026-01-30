@@ -1,0 +1,78 @@
+{
+    "format": "behavioral-test-results",
+    "producer": {
+        "tool": "cucumber-jvm",
+        "version": "7.15.0"
+    },
+    "build": {
+        "application": "pet-med-app",
+        "version": "1.3.0",
+        "environment": "staging",
+        "base_url": "https://pet-med-app.staging.rovercloud.internal",
+        "commit": "abc123def456",
+        "executed_at_utc": "2026-01-30T15:33:07Z",
+        "duration_seconds": 15.904
+    },
+    "summary": {
+        "scenarios_total": 4,
+        "scenarios_passed": 4,
+        "scenarios_failed": 0
+    },
+    "scenarios": [
+        {
+            "name": "Dose is clamped to safety maximum for the medicine",
+            "scenario_id": "dose_clamped_to_safety_maximum",
+            "tags": ["critical", "dosing"],
+            "result": "pass",
+            "assertions": [
+                "http_status == 200",
+                "dose.clamped == true",
+                "dose.applied_mg_per_kg_per_day == dose.max_allowed_mg_per_kg_per_day",
+                "dose.applied_mg_per_kg_per_day <= dose.max_allowed_mg_per_kg_per_day",
+                "dose.applied_total_mg_per_day > 0"
+            ],
+            "steps": "Given the safety maximum dose for the medicine and the pet weight. When a requested dose exceeds the safety maximum. Then the applied dose is clamped to the maximum allowed value and returned to the caller."
+        },
+        {
+            "name": "Dispense rejects medicine mismatch to prevent wrong-medication events",
+            "scenario_id": "reject_medicine_mismatch_on_dispense",
+            "tags": ["critical", "dispense"],
+            "result": "pass",
+            "assertions": [
+                "http_status == 409",
+                "error.code == MEDICINE_MISMATCH",
+                "dispense_event_created == false",
+                "prescription_id_unchanged == true"
+            ],
+            "steps": "Given an active prescription for a specific medicine. When a dispense request is made for a different medicine. Then the request is rejected and no dispense event is recorded."
+        },
+        {
+            "name": "Dispense succeeds when medicine matches prescription and inventory is sufficient",
+            "scenario_id": "dispense_succeeds_with_matching_medicine",
+            "tags": ["fulfillment"],
+            "result": "pass",
+            "assertions": [
+                "http_status == 200",
+                "dispense_event_created == true",
+                "dispense.medicine_code == prescription.medicine_code",
+                "dispense.quantity > 0",
+                "inventory.available_units >= 0",
+                "prescription.refills_remaining >= 0"
+            ],
+            "steps": "Given an active prescription and sufficient inventory. When the correct medicine is dispensed. Then the dispense succeeds and inventory and refills are updated."
+        },
+        {
+            "name": "Medication history includes the latest dispense event",
+            "scenario_id": "medication_history_includes_latest_dispense",
+            "tags": ["history"],
+            "result": "pass",
+            "assertions": [
+                "http_status == 200",
+                "response.events.contains_type == DISPENSE",
+                "response.events.latest.medicine_code != null",
+                "response.events.latest.timestamp != null"
+            ],
+            "steps": "Given prior dispense events for a pet. When medication history is requested. Then the latest dispense event is included in the response."
+        }
+    ]
+}

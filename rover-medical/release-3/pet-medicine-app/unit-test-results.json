@@ -1,0 +1,124 @@
+{
+    "format": "junit-results",
+    "producer": {
+        "tool": "junit-platform-console",
+        "version": "1.10.2"
+    },
+    "runtime": {
+        "language": "java",
+        "java_version": "21.0.2",
+        "os": "linux",
+        "kernel": "6.5.0"
+    },
+    "build": {
+        "application": "pet-med-app",
+        "version": "1.3.0",
+        "commit": "abc123def456",
+        "executed_at_utc": "2026-01-30T15:28:19Z",
+        "duration_seconds": 1.938
+    },
+    "summary": {
+        "containers_found": 6,
+        "containers_skipped": 0,
+        "containers_started": 6,
+        "containers_aborted": 0,
+        "containers_successful": 6,
+        "containers_failed": 0,
+        "tests_found": 50,
+        "tests_skipped": 0,
+        "tests_started": 50,
+        "tests_aborted": 0,
+        "tests_successful": 50,
+        "tests_failed": 0
+    },
+    "suites": [
+        {
+            "name": "MedicineCatalogServiceTest",
+            "tests": [
+                { "name": "shouldReturnMedicineByNdc", "result": "pass" },
+                { "name": "shouldReturnMedicineByNameExactMatch", "result": "pass" },
+                { "name": "shouldReturnMedicineByNameCaseInsensitive", "result": "pass" },
+                { "name": "shouldRejectUnknownMedicineId", "result": "pass" },
+                { "name": "shouldReturnStrengthOptionsForMedicine", "result": "pass" },
+                { "name": "shouldReturnRouteOptionsForMedicine", "result": "pass" },
+                { "name": "shouldMarkControlledSubstanceFlagCorrectly", "result": "pass" },
+                { "name": "shouldReturnDefaultUnitsForStrength", "result": "pass" },
+                { "name": "shouldNotReturnInactiveMedicinesByDefault", "result": "pass" }
+            ]
+        },
+        {
+            "name": "PrescriptionServiceTest",
+            "tests": [
+                { "name": "shouldCreatePrescriptionWithValidInputs", "result": "pass" },
+                { "name": "shouldAssignPrescriptionId", "result": "pass" },
+                { "name": "shouldSetStatusActiveOnCreate", "result": "pass" },
+                { "name": "shouldRejectPrescriptionForUnknownPet", "result": "pass" },
+                { "name": "shouldRejectPrescriptionForUnknownMedicine", "result": "pass" },
+                { "name": "shouldRejectZeroOrNegativeDose", "result": "pass" },
+                { "name": "shouldRejectDoseAboveSafetyMax", "result": "pass" },
+                { "name": "shouldRejectInvalidFrequencyCode", "result": "pass" },
+                { "name": "shouldSetRefillCountCorrectly", "result": "pass" },
+                { "name": "shouldSetDurationDaysCorrectly", "result": "pass" },
+                { "name": "shouldExpirePrescriptionAfterEndDate", "result": "pass" },
+                { "name": "shouldPreventDuplicateActivePrescriptionSameDrugSamePetIfPolicyEnabled", "result": "pass" }
+            ]
+        },
+        {
+            "name": "DosingCalculatorTest",
+            "tests": [
+                { "name": "shouldCalculateDoseMgFromMgPerKgAndWeight", "result": "pass" },
+                { "name": "shouldRoundDoseToNearestAllowedIncrement", "result": "pass" },
+                { "name": "shouldRejectWeightKgLessThanOrEqualZero", "result": "pass" },
+                { "name": "shouldClampDoseToSafetyMaximum", "result": "pass" },
+                { "name": "shouldConvertLbToKgCorrectly", "result": "pass" },
+                { "name": "shouldConvertKgToLbCorrectly", "result": "pass" },
+                { "name": "shouldCalculateTotalMgForDaysAndFrequency", "result": "pass" },
+                { "name": "shouldCalculateUnitsForTabletStrength", "result": "pass" }
+            ]
+        },
+        {
+            "name": "DispenseServiceTest",
+            "tests": [
+                { "name": "shouldDispenseAgainstActivePrescription", "result": "pass" },
+                { "name": "shouldCreateDispenseId", "result": "pass" },
+                { "name": "shouldDecrementInventoryOnDispense", "result": "pass" },
+                { "name": "shouldDecrementRefillsOnDispense", "result": "pass" },
+                { "name": "shouldRejectDispenseWhenPrescriptionExpired", "result": "pass" },
+                { "name": "shouldRejectDispenseWhenPrescriptionCancelled", "result": "pass" },
+                { "name": "shouldRejectDispenseWhenRefillsExhausted", "result": "pass" },
+                { "name": "shouldRejectDispenseWhenQuantityExceedsRemainingCourse", "result": "pass" },
+                { "name": "shouldRejectDispenseWhenInventoryInsufficient", "result": "pass" },
+                { "name": "shouldBeIdempotentOnDuplicateDispenseRequestId", "result": "pass" }
+            ]
+        },
+        {
+            "name": "InventoryServiceTest",
+            "tests": [
+                { "name": "shouldReserveStockForDispense", "result": "pass" },
+                { "name": "shouldReleaseReservationOnFailure", "result": "pass" },
+                { "name": "shouldRejectNegativeAdjustment", "result": "pass" },
+                { "name": "shouldAllowPositiveAdjustmentWithReason", "result": "pass" },
+                { "name": "shouldRejectAdjustmentWithoutReason", "result": "pass" },
+                { "name": "shouldNotAllowStockToGoBelowZero", "result": "pass" },
+                { "name": "shouldReturnOnHandQuantity", "result": "pass" },
+                { "name": "shouldReturnReservedQuantity", "result": "pass" },
+                { "name": "shouldReturnAvailableQuantity", "result": "pass" },
+                { "name": "shouldTrackLotAndExpirationDates", "result": "pass" }
+            ]
+        },
+        {
+            "name": "MedicationHistoryServiceTest",
+            "tests": [
+                { "name": "shouldReturnMedicationHistoryForPet", "result": "pass" },
+                { "name": "shouldIncludePrescriptionEvents", "result": "pass" },
+                { "name": "shouldIncludeDispenseEvents", "result": "pass" },
+                { "name": "shouldSortByEventTimeDescending", "result": "pass" },
+                { "name": "shouldFilterByMedicineId", "result": "pass" },
+                { "name": "shouldFilterByDateRange", "result": "pass" },
+                { "name": "shouldRedactNotesWhenRequesterIsNotVet", "result": "pass" },
+                { "name": "shouldIncludeDoseAndUnitsInHistoryRecord", "result": "pass" },
+                { "name": "shouldIncludeDispensedQuantityInHistoryRecord", "result": "pass" }
+            ]
+        }
+    ]
+}
