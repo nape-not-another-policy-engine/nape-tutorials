@@ -1,3 +1,0 @@
-# id pet-med-dbvc
-
-uid=1003(pet-med-dbsvc) gid=1003(pet-med-dbsvc) groups=1003(pet-med-dbsvc)

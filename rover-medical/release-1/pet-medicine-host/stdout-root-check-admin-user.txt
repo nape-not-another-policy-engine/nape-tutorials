@@ -1,3 +1,0 @@
-# id admin
-
-uid=1001(admin) gid=1001(admin) groups=1001(admin),27(sudo)

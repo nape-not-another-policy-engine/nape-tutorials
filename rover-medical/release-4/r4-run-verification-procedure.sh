@@ -10,7 +10,7 @@ nape collect start \
     --subject-id "$SUBJECT_ID" \
     --procedure-link "$PROCEDURE_LINK" \
     --procedure-directory rover-medical/release-4 \
-    --meta employee-name "Bill Bensing" \
+    --meta system-owner "Bill Bensing" \
 
 echo "--- Starting Evidence Collection --- "
 

@@ -10,7 +10,7 @@ nape collect start \
     --subject-id "$SUBJECT_ID" \
     --procedure-link "$PROCEDURE_LINK" \
     --procedure-directory rover-medical/release-1 \
-    --meta employee-name "Bill Bensing" \
+    --meta system-owner "Bill Bensing" \
 
 echo "--- Starting Evidence Collection --- "
 
@@ -19,52 +19,6 @@ echo "--- Collecting Evidence of Pet Medicine Application Configuration --- "
 nape collect evidence \
     --control-activity "pet-medicine-app" \
     --file-path "pet-medicine-app/app-config.toml"
-
-echo "--- Collecting Evidence of Pet Medicine Database Configuration --- "
-
-nape collect evidence \
-    --control-activity "pet-medicine-db" \
-    --file-path "pet-medicine-db/my-db.ini"
-
-echo "--- Collecting Evidence of Pet Medicine Database Host Configuration --- "
-
-nape collect evidence \
---control-activity "pet-medicine-host" \
---file-path "pet-medicine-host/stdout-user-exists-app-user.txt"
-nape collect evidence \
---control-activity "pet-medicine-host" \
---file-path "pet-medicine-host/stdout-user-exists-db-user.txt"
-
-nape collect evidence \
---control-activity "pet-medicine-host" \
---file-path "pet-medicine-host/stdout-no-login-app-user.txt"
-nape collect evidence \
---control-activity "pet-medicine-host" \
---file-path "pet-medicine-host/stdout-no-login-db-user.txt"
-
-nape collect evidence \
---control-activity "pet-medicine-host" \
---file-path "pet-medicine-host/stdout-root-check-admin-user.txt"
-nape collect evidence \
---control-activity "pet-medicine-host" \
---file-path "pet-medicine-host/stdout-root-check-app-user.txt"
-nape collect evidence \
---control-activity "pet-medicine-host" \
---file-path "pet-medicine-host/stdout-root-check-db-user.txt"
-
-
-nape collect evidence \
---control-activity "pet-medicine-host" \
---file-path "pet-medicine-host/stdout-auditctl-installed.txt"
-nape collect evidence \
---control-activity "pet-medicine-host" \
---file-path "pet-medicine-host/stdout-auditctl-user-commands-logged.txt"
-
-
-
-
-
-
 
 echo "--- Evidence Collection Complete - Generating Report --- "
 
