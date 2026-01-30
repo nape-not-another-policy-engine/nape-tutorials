@@ -11,6 +11,7 @@ nape collect start \
     --procedure-link "$PROCEDURE_LINK" \
     --procedure-directory rover-medical/release-1 \
     --meta system-owner "Bill Bensing" \
+    --meta release-number  1
 
 echo "--- Starting Evidence Collection --- "
 
