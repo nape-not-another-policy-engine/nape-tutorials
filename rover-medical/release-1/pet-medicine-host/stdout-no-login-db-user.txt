@@ -1,0 +1,3 @@
+# getent passwd pet-med-dbsvc
+
+pet-med-dbsvc:x:1004:1004:Pet Med DbSvc:/nonexistent:/bin/false

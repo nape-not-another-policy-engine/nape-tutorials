@@ -1,0 +1,6 @@
+# systemctl cat pet-medicine-db
+
+[Service]
+User=pet-med-dbsvc
+Group=pet-med-dbsvc
+ExecStart=/usr/sbin/pet-medicine-db

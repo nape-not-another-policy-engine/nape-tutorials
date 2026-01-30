@@ -1,0 +1,6 @@
+# systemctl cat pet-medicine-app
+
+[Service]
+User=pet-med-app
+Group=pet-med-app
+ExecStart=/opt/pet-medicine/bin/pet-medicine-app

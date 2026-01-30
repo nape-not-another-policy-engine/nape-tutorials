@@ -1,0 +1,3 @@
+# getent passwd pet-med-app
+
+pet-med-app:x:1004:1004:Pet Med App:/nonexistent:/usr/sbin/nologin
