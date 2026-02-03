@@ -31,51 +31,51 @@ echo "--- Collecting Evidence of Pet Medicine Database Host Configuration --- "
 
 nape collect evidence \
 --control-activity "pet-medicine-host" \
---file-path "pet-medicine-host/stdout-app-user.txt"
+--file-path "pet-medicine-host/stdout-auditctl-installed.txt"
 
 nape collect evidence \
 --control-activity "pet-medicine-host" \
---file-path "pet-medicine-host/stdout-app-user-no-login.txt"
+--file-path "pet-medicine-host/stdout-auditctl-user-commands-logged.txt"
 
 nape collect evidence \
 --control-activity "pet-medicine-host" \
---file-path "pet-medicine-host/stdout-app-user-not-root.txt"
+--file-path "pet-medicine-host/stdout-no-login-app-user.txt"
 
 nape collect evidence \
 --control-activity "pet-medicine-host" \
---file-path "pet-medicine-host/stdout-db-user.txt"
-nape collect evidence \
---control-activity "pet-medicine-host" \
---file-path "pet-medicine-host/stdout-db-user-no-login.txt"
-nape collect evidence \
---control-activity "pet-medicine-host" \
---file-path "pet-medicine-host/stdout-db-user-not-root.txt"
+--file-path "pet-medicine-host/stdout-no-login-db-user.txt"
 
 nape collect evidence \
 --control-activity "pet-medicine-host" \
---file-path "pet-medicine-host/stdout-admin-user-not-root.txt"
+--file-path "pet-medicine-host/stdout-root-check-admin-user.txt"
 
 nape collect evidence \
 --control-activity "pet-medicine-host" \
---file-path "pet-medicine-host/stdout-command-audit-installed.txt"
+--file-path "pet-medicine-host/stdout-root-check-app-user.txt"
 
+nape collect evidence \
+--control-activity "pet-medicine-host" \
+--file-path "pet-medicine-host/stdout-root-check-db-user.txt"
 
 nape collect evidence \
 --control-activity "pet-medicine-host" \
---file-path "pet-medicine-host/stdout-admin-user-commands-logged.txt"
+--file-path "pet-medicine-host/stdout-user-exists-app-user.txt"
+
 nape collect evidence \
 --control-activity "pet-medicine-host" \
---file-path "pet-medicine-host/stdout-app-user-commands-logged.txt"
-nape collect evidence \
---control-activity "pet-medicine-host" \
---file-path "pet-medicine-host/stdout-db-user-commands-logged.txt"
+--file-path "pet-medicine-host/stdout-user-exists-db-user.txt"
+
+echo "--- Collecting Evidence of Pet Medicine Rover Cloud Configuration & 3rd Party Data --- "
 
 nape collect evidence \
 --control-activity "rover-cloud" \
 --file-path "rover-cloud/cloud-config.yaml"
+
 nape collect evidence \
 --control-activity "rover-cloud" \
 --file-path "rover-cloud/soc1-report-analysis.json"
+
+
 
 echo "--- Evidence Collection Complete - Generating Report --- "
 
